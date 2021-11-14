@@ -1,0 +1,80 @@
+@use 'mixins' as *;
+
+:root {
+	--clr-primary-900: #BA265D;
+	--clr-primary-400: #eb2f64;
+	--clr-primary-100: #FF3366;
+
+	--clr-grey-light-400: #ccc;
+	--clr-grey-light-300: #f0eeee;
+	--clr-grey-light-200: #f4f2f2;
+	--clr-grey-light-100: #faf9f9;
+
+	--clr-grey-dark-300: #333;
+	--clr-grey-dark-200: #777;
+	--clr-grey-dark-100: #999;
+
+	--clr-white: #fff;
+
+	--shadow-dark: 0 2rem 6rem rgba(0,0,0,0.3);
+	--shadow-light: 0 2rem 5rem rgba(0,0,0,0.06);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure,
+blockquote {
+	margin: 0;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+	line-height: 1.2;
+}
+
+ul,
+ol {
+	padding: 0;
+	list-style: none;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+body {
+	padding: 5rem 0;
+	font-family: 'Open Sans', sans-serif;
+	font-size: .875rem;
+	font-weight: 400;
+	line-height: 1.6;
+	color: var(--clr-grey-dark-200);
+	background-image: linear-gradient(to right bottom, var(--clr-primary-100), var(--clr-primary-900));
+	background-size: cover;
+	background-repeat: no-repeat;
+	min-height: 100vh;
+
+	@include mq(epsilon) {
+		padding: 0;
+	}
+	@include mq(delta) {
+		font-size: .8125rem;
+	}
+}

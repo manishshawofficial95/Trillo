@@ -1,0 +1,144 @@
+// FOR SETTING HEIGHT & WIDTH
+
+@mixin box($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// FOR SETTING PSEUDO ELEMENTS' INITIAL VALUES
+
+@mixin pseudo(
+  $width: 100%, 
+  $height: $width, 
+  $content: '', 
+  $display: inline-block, 
+  )
+  {
+  content: $content;
+  display: $display;
+  width: $width;
+  height: $height;
+}
+
+// FOR SETTING ABSOLUTE POSITIONING VALUES
+
+@mixin absolute($position: null, $value-1: 0, $value-2: 0) {
+  position: absolute;
+
+  @if ($position == tl) {
+    top: $value-1;
+    left: $value-2;
+  }
+  @else if ($position == tr) {
+    top: $value-1;
+    right: $value-2;
+  }
+  @else if ($position == bl) {
+    bottom: $value-1;
+    left: $value-2;
+  }
+  @else if ($position == br) {
+    bottom: $value-1;
+    right: $value-2;
+  }
+}
+
+// FOR CENTERING ABSOLUTE POSITIONED ELEMENTS
+
+@mixin absolute-center($axis: both) {
+    position: absolute;
+    
+    @if $axis == x or $axis == horizontal {
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    @else if $axis == y or $axis == vertical {
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+    @else if $axis == both {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+}
+
+// FOR CENTERING FLEX CONTAINERS CHILDREN
+// FOR FLEX DIRECTION ROW
+
+@mixin flex-center($axis: both) {
+  display: flex;
+  flex-direction: row;
+
+    @if $axis == x or $axis == main {
+      justify-content: center;
+    }
+    @else if $axis == y or $axis == cross {
+      align-items: center;
+    }
+    @else if $axis == both {
+      justify-content: center;
+      align-items: center;
+    }
+}
+
+// FOR CENTERING FLEX CONTAINERS CHILDREN
+// FOR FLEX DIRECTION COLUMN
+
+@mixin flex-center-column($axis: both) {
+  display: flex;
+  flex-direction: column;
+  
+  @if $axis == x or $axis == cross {
+    align-items: center;
+  }
+  @else if $axis == y or $axis == main {
+    justify-content: center;
+  }
+  @else if $axis == both {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// FOR WRITING MEDIA QUERY
+
+// 0    -  500px    alpha
+// 361  -  640px    beta
+// 641  -  900px    gamma
+// 900  -  1000px   delta
+// 1001 -  1200px   epsilon
+
+
+@mixin mq($breakpoint) {
+
+  @if $breakpoint == alpha {
+    @media only screen and (max-width: 31.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == beta {
+    @media only screen and (max-width: 40em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == gamma {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == delta {
+    @media only screen and (max-width: 62.5em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == epsilon {
+    @media only screen and (max-width: 75em) {
+      @content;
+    }
+  }
+}
